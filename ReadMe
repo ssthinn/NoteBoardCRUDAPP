@@ -2,7 +2,7 @@ NoteBoard-CRUD-App
 
 Description
 -----------
-This App was made in Java and the Spring MVC Web framework with SQLite in-memory database. Dependencies are downloaded from Maven Repository.
+This App was made in Java 17 and the Spring MVC Web framework with SQLite in-memory database. Dependencies are downloaded from Maven Repository.
 It allows users to quickly and easily add, delete, and update and review list of board records. 
 
 Project Build and Run
