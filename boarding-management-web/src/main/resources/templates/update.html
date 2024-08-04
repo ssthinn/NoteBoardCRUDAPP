@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{masterlayout.html}">
+
+<section layout:fragment="web-content">
+
+	<div class="wrap-content">
+		
+		<div th:replace="~{navexit :: navexit}"></div>
+		
+		<div class="login100-form-title d-flex justify-content-left">
+			Update Board Record
+		</div>
+
+		<form class="validate-form" th:action="@{/update}" th:object="${board}" method="post">
+			<input type="hidden" id="id" name="id" th:value="${board.id}" />
+															
+			<div th:replace="~{board :: board}"></div>
+
+		</form>
+	</div>
+</section>

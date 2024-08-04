@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{masterlayout.html}">
+
+<section layout:fragment="web-content">
+
+	<div class="wrap-content">
+		
+		<div th:replace="~{navexit :: navexit}"></div>
+		
+		<div class="login100-form-title d-flex justify-content-left">
+			Post New Board
+		</div>
+
+		<form class="validate-form" th:action="@{/create}" th:object="${board}" method="post">
+
+			<div th:replace="~{board :: board}"></div>
+
+		</form>
+	</div>
+</section>

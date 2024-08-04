@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{masterlayout.html}">
+
+<section layout:fragment="web-content">
+
+	<div class="wrap-content">
+
+		<div th:replace="~{navexit :: navexit}"></div>
+
+		<div class="login100-form-title">
+
+			<section class="row">
+				<div class="col-12 col-lg-9 d-flex justify-content-left">Boards Listing</div>
+				<div class="col-12 col-lg-3 d-flex justify-content-end"><a th:href="@{/post}"
+						class="btn icon icon-left btn-success "><i class="fa fa-plus"></i> Post Board</a></div>
+			</section>
+
+		</div>
+
+		<span th:if="${boardList.content.isEmpty()}" class="txt2">
+			No posts found in the list ...
+		</span>
+
+
+		<ul th:each="board : ${boardList.content}" class="list-group txt3">
+			<li class="list-group-item d-flex justify-content-between align-items-center">
+				[[${boardStat.index+1}]]) [[${board.Name}]]
+				<div class="widget-content-right">
+					<a th:href="@{/edit/{id}(id=${board.Id})}" class="border-0 btn-transition btn btn-outline-success">
+						<i class="fa fa-edit"></i></a>
+					<a th:href="@{/del/{id}(id=${board.Id})}" class="border-0 btn-transition btn btn-outline-danger">
+						<i class="fa fa-trash"></i></a>
+				</div>
+
+			</li>
+		</ul>
+
+		<br>
+		<div th:if="${boardList.totalPages > 0 }" class="pagination">
+			<div class="row col-sm-12 txt1">
+				<div class="col-sm-2 d-flex justify-content-left">
+					Total : [[${boardList.totalElements}]]
+				</div>
+				<div class="col-sm-8 txt1">
+					<span th:each="pageNumber : ${pageNumbers}">
+						<a th:if="${currentPage != pageNumber}" th:href="@{/list(page=${pageNumber})}"
+							th:text="${pageNumber}"></a>
+						<span th:unless="${currentPage != pageNumber}" class="txt-underline">[[${pageNumber}]]</span> &nbsp; &nbsp;
+					</span>
+				</div>
+				<div class="col-sm-1 txt1">
+					<a th:if="${currentPage < boardList.totalPages}"
+						th:href="@{/list(page=${currentPage + 1})}" th:text="Next"></a>
+					<span th:unless="${currentPage < boardList.totalPages}">Next</span>
+				</div>
+				<div class="col-sm-1 txt1">
+					<a th:if="${currentPage < boardList.totalPages}"
+						th:href="@{/list(page=${boardList.totalPages})}" th:text="Last"></a>
+					<span th:unless="${currentPage < boardList.totalPages}">Last</span>
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
+
+</section>

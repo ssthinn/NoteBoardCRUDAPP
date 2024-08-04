@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<div th:fragment="navexit">
+	<div class="text-center">
+		<span class="txt1">
+			Hello, [[${session.loginUser}]]
+		</span>
+		<a class="txt2" th:href="@{/logout}">
+			Logout here!
+			<i class="fa fa-sign-out m-l-5" aria-hidden="true"></i>
+		</a>
+	</div>
+	<hr class="hr-text" data-content="OR">
+
+</div>
+
+</html>
